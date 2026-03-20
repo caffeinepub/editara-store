@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Dark theme as default */
+    --background: 0.09 0.025 280;
+    --foreground: 0.97 0.005 250;
+    --card: 0.13 0.02 280;
+    --card-foreground: 0.97 0.005 250;
+    --popover: 0.11 0.025 280;
+    --popover-foreground: 0.97 0.005 250;
+    --primary: 0.55 0.2 278;
+    --primary-foreground: 0.97 0.005 250;
+    --secondary: 0.6 0.19 250;
+    --secondary-foreground: 0.97 0.005 250;
+    --muted: 0.17 0.02 280;
+    --muted-foreground: 0.7 0.01 250;
+    --accent: 0.75 0.18 70;
+    --accent-foreground: 0.09 0.025 280;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.25 0.04 280;
+    --input: 0.2 0.03 280;
+    --ring: 0.55 0.2 278;
+    --chart-1: 0.55 0.2 278;
+    --chart-2: 0.6 0.19 250;
+    --chart-3: 0.75 0.18 70;
+    --chart-4: 0.35 0.19 280;
+    --chart-5: 0.45 0.22 278;
+    --sidebar: 0.13 0.03 285;
+    --sidebar-foreground: 0.97 0.005 250;
+    --sidebar-primary: 0.55 0.2 278;
+    --sidebar-primary-foreground: 0.97 0.005 250;
+    --sidebar-accent: 0.17 0.02 280;
+    --sidebar-accent-foreground: 0.97 0.005 250;
+    --sidebar-border: 0.25 0.04 280;
+    --sidebar-ring: 0.55 0.2 278;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+  }
+
+  /* Custom purple scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.09 0.025 280);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      oklch(0.55 0.2 278),
+      oklch(0.6 0.19 250)
+    );
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      oklch(0.6 0.22 278),
+      oklch(0.65 0.2 250)
+    );
+  }
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-white {
+  background: linear-gradient(135deg, #ffffff, #e2e8f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(30, 30, 45, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
+/* Glow button */
+.glow-btn {
+  background: linear-gradient(135deg, #5b21b6, #3b82f6);
+  box-shadow: 0 0 20px rgba(91, 33, 182, 0.5);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glow-btn:hover {
+  box-shadow: 0 0 35px rgba(91, 33, 182, 0.8), 0 0 60px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+  66% {
+    transform: translateY(6px) rotate(-3deg);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-gold {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(245, 158, 11, 0.9), 0 0 50px
+      rgba(245, 158, 11, 0.4);
+  }
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-gradient {
+  animation: gradientShift 6s ease infinite;
+}
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+.animate-scroll-bounce {
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero gradient animation */
+.hero-bg {
+  background: linear-gradient(135deg, #0f0f1a, #1a0b3a, #0f1a2a, #0f0f1a);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* Price monospace */
+.price-mono {
+  font-family: "Courier New", "JetBrains Mono", monospace;
+  font-weight: 700;
+}
+
+/* Badge pill */
+.badge-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-glass {
+  background: rgba(15, 10, 30, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+}
+
+/* Social icon hover */
+.social-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-card:hover {
+  transform: scale(1.1) translateY(-4px);
+}
+
+/* WhatsApp float button */
+.whatsapp-float {
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover .wa-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wa-label {
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Progress bar shimmer */
+.shimmer-bar {
+  background: linear-gradient(
+    90deg,
+    #5b21b6 0%,
+    #8b5cf6 40%,
+    #3b82f6 60%,
+    #5b21b6 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
